@@ -1,0 +1,259 @@
+body{
+	background-image: url(back2.jpg);
+    height: 100vh;
+   background-size:cover;
+	background-position:center;
+}
+
+.formx{
+	position: relative;
+	z-index: 1;
+    box-sizing:border-box;
+	box-shadow: 0 15px 25px rgba(0,0,0,.5);
+    padding: 45px;
+	text-align:center;
+    color : #fff;
+   background: rgba(0, 0, 0);
+
+   
+}
+
+
+
+
+.formx ul{
+    margin:0px;
+   padding:0px;
+ float: right;
+ list-style-type: none;
+ margin-top: 0.2px;
+}
+.formx ul li {
+
+display: inline-block;
+
+}
+.formx ul li a{
+text-decoration: none;
+color:rgb(249, 197, 28);
+font-size:  20px;
+padding: 5px 30px;
+
+
+}
+
+.formx ul li a:hover{
+ background-color:rgb(249, 197, 28);
+color: #000;
+}
+.formx ul li.active a{
+
+ background-color: rgb(249, 197, 28);
+color: #000;
+}
+h1{
+  
+    float: left;
+    list-style-type: none;
+ 
+    
+}
+
+
+
+.navform{
+    padding:0;
+    margin:0;
+    position: relative;
+	z-index: 1;
+    box-sizing:border-box;
+	box-shadow: 10 40px 25px rgba(0,0,0,.5);
+   
+    
+    font-size: 20px;
+    color :  rgb(249, 197, 28);
+   
+    background: none;
+    left:0px;
+}
+
+.navform ul {
+    position: fixed;
+	background: rgb(0, 0, 0);
+	box-sizing: cover;
+	box-shadow:  rgba(0,0,0,.5);
+	max-width: 600px;
+    padding: 40px;
+    margin:0px;
+    height: 100%;
+    float: left;
+    color :  rgb(249, 197, 28);
+   
+     margin-top: 0px;
+}
+
+.navform ul li{
+    display:block;
+    padding: 20px;
+    color :  rgb(249, 197, 28);
+}
+
+
+.navform ul li a{
+    text-decoration: none;
+    color:rgb(249, 197, 28);
+    padding: 5px 30px;
+    
+    
+    }
+    .navform  ul li a:hover{
+        background-color:rgb(249, 197, 28);
+       color: #000;
+       }
+       .navform  ul li.active a{
+       
+        background-color: rgb(249, 197, 28);
+       color: #000;
+       }
+
+
+.formc{
+	position: relative;
+	z-index: 1;
+    box-sizing:border-box;
+    top:50px;
+    margin-left: 150px;
+    min-height: 60%;
+    width: 60%;
+	box-shadow: 0 15px 25px rgba(0,0,0,.5);
+    padding: 45px;
+    display:block;
+    color: black;
+    background: rgba(255, 255, 255, 0.664);
+    
+  }
+
+
+
+  .formc input{
+   
+    font-family: "Roboto", sans-serif;
+    overflow: hidden;
+    border-bottom: 3px solid black;
+    background: none;
+	width:100%;
+    margin: 0 0 15px;	
+    padding: 15px;
+    font-size:14px;
+     border:none;
+    outline: none;
+
+}
+
+.baa{
+
+    border-bottom: 3px solid black;
+
+}
+
+.formco{
+	position: relative;
+	z-index: 1;
+    box-sizing:border-box;
+    top:50px;
+    margin-left: 150px;
+    
+    width: 280px;
+	box-shadow: 0 15px 25px rgba(0,0,0,.5);
+    padding: 45px;
+    display:block;
+    color: black;
+    background: rgba(255, 255, 255, 0.664);
+
+    
+}
+.formc select{
+   
+    font-family: "Roboto", sans-serif;
+    overflow: hidden;
+    border-bottom: 3px solid black;
+    background:  rgba(0, 0, 0, 0.288);
+	width:100%;
+    margin: 0 0 15px;	
+    padding: 15px;
+    font-size:14px;
+     border:none;
+    outline: none;
+    -webkit-appearance:button;
+}
+.ass{
+    display: inline-block;
+
+}
+.ass input{
+
+    font-family: "Roboto", sans-serif;
+    overflow: hidden;
+    border-bottom: 3px solid black;
+    background: none;
+	width:40%;
+    margin: 0 0 15px;	
+    padding: 15px;
+    font-size:14px;
+     border:none;
+    outline: none;
+
+}
+
+.forms{
+    position: relative;
+	z-index: 1;
+    box-sizing:border-box;
+    top:50px;
+    margin:20px;
+    margin-left: 150px;
+    min-height: 60%;
+    width: 60%;
+	box-shadow: 0 15px 25px rgba(0,0,0,.5);
+    padding: 45px;
+    display:block;
+    color: black;
+    background: rgba(249, 197, 28, 0.644);
+    text-align: center;
+}
+.formsh{
+    position: relative;
+	z-index: 1;
+    box-sizing:border-box;
+    top:50px;
+    margin:20px;
+    margin-left: 150px;
+    min-height: 5%;
+    min-width: 160px;
+    width: 60%;
+	box-shadow: 0 15px 25px rgba(0,0,0,.5);
+    padding: 45px;
+    display:block;
+    color: black;
+    background: rgb(255, 255, 255);
+    text-align: center;
+    display:block;
+}
+
+
+.forms button{
+    list-style-type: none;
+    text-align: center;
+    color:black;
+    font-size: 40px;
+  
+    background: rgba(249, 197, 28, 0);
+    border:none;
+
+}
+
+.forms li a{
+    color:black;
+    font-size: 40px;
+    text-align: center;
+}
