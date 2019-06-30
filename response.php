@@ -17,6 +17,35 @@ if(isset($_GET['logout']))
 }
 
 ?>
+<?php
+
+$errors = array();
+
+$servername = "localhost";
+$username = "root";
+$password = "";
+$usernamed= $_SESSION['username'];
+// Create connection
+$db = mysqli_connect($servername, $username, $password, $usernamed);
+// Check connection
+if (!$db) {
+    die("Connection failed: " . mysqli_connect_error());
+}
+
+// Create database
+
+
+
+
+
+
+
+
+
+
+
+?>
+
 <!--?php
  ini_set(display_errors',1);
  ?-->
@@ -35,7 +64,7 @@ if(isset($_GET['logout']))
 </head>
   <body>
 
-  <form method="post">
+  <form method="post" action="response.php">
     <div class="formx">
 <div class="row">
   <div class="col-sm-6">
@@ -63,15 +92,16 @@ if(isset($_GET['logout']))
 
 </div> </div>
 
-<div class="navform">
+
   <div class="row">
 <div class="col-sm-4">
+<div class="navform">
 <nav>
              <ul>
 
-               <li class="active"><a>Analytics</a></li>
+               <li class="active"><a >Analytics</a></li>
                <li><a href="notification.php">Notifications</a></li>
-               <li><a href="formc.php">forms Created</a></li>
+               <li ><a href="formc.php">forms Created</a></li>
                <li ><a href="explore.php">explore</a></li>
            
             </ul>
@@ -81,9 +111,55 @@ if(isset($_GET['logout']))
 
 
 </div>
+</div>
+
+<div class="col-sm-4">
+   
+<ul>
+<?php 
+           
+           
+           $usernamed= $_SESSION['username'];
+           $db= mysqli_connect('localhost','root','', $usernamed)or die("could not connect database..");
+               $sql="SELECT * FROM `forms`";
+              $result=mysqli_query($db, $sql);
+ 
+
+  ?>
+  <?php if($result):?>
+     <?php while($row= mysqli_fetch_array($result)): ?>
+
+     <div class="formv">
+         <?php
+        $name= $row['forms'] ;
+        echo "<button href='borm.php?ID={$name}'   name='$name' type='submit' >$name</button>";
+        echo "<script> console.log('$name');</script>" ; 
+?>
+</div>
+  <?php endwhile; ?>
+<?php endif;?>
+</ul>
 
 </div>
 </div>
+<?php
+ $usernamed= $_SESSION['username'];
+ $db= mysqli_connect('localhost','root','', $usernamed)or die("could not connect database..");
+     $sql="SELECT * FROM `forms`";
+    $result=mysqli_query($db, $sql);
+
+if($result){
+while($row= mysqli_fetch_array($result)){
+if(isset($_POST[$row['forms']]))
+{   
+
+    $name= $row['forms'] ;
+     $_SESSION['formname']= $row['forms'];
+     header("location: analytics.php?ID=$name");
+}
+}}
+?>
+
 </form>
 </body>
 	  

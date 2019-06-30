@@ -93,6 +93,7 @@ $db= mysqli_connect('localhost','root','', $usernamed)or die("could not connect 
 $sql="SELECT * FROM `forms`";
     $result=mysqli_query($db, $sql);
 ?>
+<?php if($result):?>
   <?php while($row= mysqli_fetch_array($result)): ?>
 
 <div class="formsh">
@@ -151,7 +152,7 @@ if($result1){
 
 </div>
 <?php endwhile; ?>
-
+<?php endif;?>
 
 </div></div></div>
 </form>

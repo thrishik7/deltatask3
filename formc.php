@@ -126,16 +126,26 @@ if (!$db) {
 
 
   ?>
-     <?php while($row= mysqli_fetch_array($result)): ?>
+  <?php if($result){
+     while($row= mysqli_fetch_array($result)){
 
-     <div class="forms">
-         <?php
+     echo "<div class='forms'>";
+         
         $name= $row['forms'] ;
         echo "<button href='borm.php?ID={$name}'   name='$name' type='submit' >$name</button>";
         echo "<script> console.log('$name');</script>" ; 
+echo "</div>";
+     }
+    }
+ else {
+ echo "<div class='forms'>";
+
+ echo "no forms created yet";
+  echo "</div>";
+}
+
+
 ?>
-</div>
-  <?php endwhile; ?>
 </ul>
 
 </div>
@@ -146,7 +156,7 @@ if (!$db) {
      $sql="SELECT * FROM `forms`";
     $result=mysqli_query($db, $sql);
 
-
+if($result){
 while($row= mysqli_fetch_array($result)){
 if(isset($_POST[$row['forms']]))
 {   
@@ -155,7 +165,8 @@ if(isset($_POST[$row['forms']]))
      $_SESSION['formname']= $row['forms'];
      header("location: borm.php?ID=$name");
 }
-}
+}}
+
 ?>
 
 </form>

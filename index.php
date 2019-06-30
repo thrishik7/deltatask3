@@ -20,7 +20,39 @@ if(isset($_GET['logout']))
 <!--?php
  ini_set(display_errors',1);
  ?-->
+ <?php
 
+$errors = array();
+
+$servername = "localhost";
+$username = "root";
+$password = "";
+$usernamed= $_SESSION['username'];
+// Create connection
+$conn = mysqli_connect($servername, $username, $password);
+// Check connection
+if (!$conn) {
+    die("Connection failed: " . mysqli_connect_error());
+}
+
+// Create database
+$sql = "CREATE DATABASE $usernamed";
+mysqli_query($conn, $sql);
+
+
+$sql = "CREATE DATABASE forms";
+mysqli_query($conn, $sql);
+
+
+
+
+
+
+
+
+
+
+?>
 <!DOCTYPE html>
 <html>
 <head>

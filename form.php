@@ -105,8 +105,8 @@ mysqli_query($conn, $sql);
  
     <div class="baa">
        
-       <input type="text" placeholder="Untitled form" name="fname" >
-       <input type="text" placeholder="Form description" name="fdescrp">
+       <input type="text" placeholder="Untitled form" name="fname" required >
+       <input type="text" placeholder="Form description" name="fdescrp" required>
 
 
 
@@ -114,8 +114,8 @@ mysqli_query($conn, $sql);
 
  <div class="baa" id="bass">
        
-       <input type="text" placeholder="Untitled question" name="qn0" >
-       <select id="mySelect" onchange="myFunction('mySelect','mySelect2','ass0' )" name="se0" > 
+       <input type="text" placeholder="Untitled question" name="qn0" required>
+       <select id="mySelect" onchange="myFunction('mySelect','mySelect2','ass0' )" name="se0" required> 
                     
                     <option>short answer </option> 
                     <option>multiple choice</option> 
@@ -135,17 +135,39 @@ mysqli_query($conn, $sql);
 </div>
 
 <div class="col-sm-5">
-<div class="formco">
-
+<div class="formco" id="formco">
+<div class="baa">
 <button class="btn btn-warning" onclick="add();" type="button" name="add_question">+</button>
 <button class="btn btn-warning" type="submit" name="submit">CREATE</button>
-<button class="btn btn-warning" onclick="mem()" type="button" name="submit2">LIMITED USERS</button>
-<button class="btn btn-primary" type="button" name="submit1">TIMED</button>
+<button class="btn btn-warning" onclick="mem();" type="button" name="submit2">LIMITED USERS</button>
+<button class="btn btn-primary"  onclick="time();" type="button" name="submit1">TIMED</button>
+<br>
+</div>
 <script>
 
+function mem()
+{
+  var bass=document.getElementById("formco");
+        var dW= document.createElement("DIV");
+      
+        bass.appendChild(dW);
+       var di= document.createElement("input");
+       di.placeholder="limit the users";
+       di.setAttribute("name","mem");
+       dW.appendChild(di);
+}
 
+function time()
+{ var bass=document.getElementById("formco");
+        var dW= document.createElement("DIV");
+      
+        bass.appendChild(dW);
+       var di= document.createElement("input");
+       di.placeholder="time";
+       di.setAttribute("name","time");
+       dW.appendChild(di);
 
-
+}
 
 
     var i=0;
@@ -172,9 +194,10 @@ mysqli_query($conn, $sql);
        dW.className = "baa";
        di.placeholder="Untitled question";
        di.setAttribute("name",id0);
+       di.setAttribute("required","true");
        dW.appendChild(di);
        var x = document.createElement("SELECT");
-  
+       x.setAttribute("required","true");
   x.setAttribute("id",id0);
   x.setAttribute("name",sel0);
   document.body.appendChild(x);
@@ -244,6 +267,7 @@ mysqli_query($conn, $sql);
             
                var dy1=document.createElement("input");
                 dy1.setAttribute("name",an0);
+                dy1.setAttribute("required","true");
               dy1.placeholder="options";
               dy2.setAttribute("type", "checkbox");
               var parentDiv = item.parentNode;
@@ -268,11 +292,13 @@ mysqli_query($conn, $sql);
              var an0= ass0+j;
             var item = document.getElementById(sel0);
               var dy2=document.createElement("input");
+
               var dy0= document.createElement("div");
               var dy= document.createElement("div");
                dy.className="ass";
                dy0.setAttribute("id", ass0);
                var dy1=document.createElement("input");
+               dy1.setAttribute("required","true");
                dy1.setAttribute("name",an0);
               dy1.placeholder="options";
               dy2.setAttribute("type", "radio");
@@ -343,9 +369,13 @@ mysqli_query($conn, $sql);
 
  if(isset($_POST['submit']))
  {
-   $usernamed= $_SESSION['username'];
   
-
+  
+  
+  echo "<script>alert('form has been created');</script>";
+  $usernamed= $_SESSION['username'];
+  
+ 
   
    $db= mysqli_connect('localhost','root','', 'forms')or die("could not connect database..");
    $bd= mysqli_connect('localhost','root','', $usernamed)or die("could not connect database..");

@@ -221,6 +221,22 @@ h1{
     background: rgba(249, 197, 28, 0.644);
     text-align: center;
 }
+.formv{
+    position: relative;
+	z-index: 1;
+    box-sizing:border-box;
+    top:50px;
+    margin:20px;
+    margin-left: 150px;
+    min-height: 60%;
+    width: 60%;
+	box-shadow: 0 15px 25px rgba(0,0,0,.5);
+    padding: 45px;
+    display:block;
+    color: black;
+    background: rgb(252, 249, 250);
+    text-align: center;
+}
 .formsh{
     position: relative;
 	z-index: 1;
@@ -253,6 +269,23 @@ h1{
 }
 
 .forms li a{
+    color:black;
+    font-size: 40px;
+    text-align: center;
+}
+
+.formv button{
+    list-style-type: none;
+    text-align: center;
+    color:black;
+    font-size: 40px;
+  
+    background: rgb(255, 255, 255);
+    border:none;
+
+}
+
+.formv li a{
     color:black;
     font-size: 40px;
     text-align: center;
