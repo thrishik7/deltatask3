@@ -73,9 +73,50 @@ if(isset($_GET['logout']))
               $row = mysqli_fetch_array($result);
               $sala=$row['formdescrpt'];
               echo "<p>$sala</p>";
-              ?>
-     
-
+            
+              $borm= $_SESSION['formname'];
+              $admin=$_SESSION['admin'];
+        
+                    
+                    $dab= mysqli_connect('localhost','root','',$admin)or die("could not connect database..");   
+                    $sql="SELECT COUNT(DISTINCT users) FROM `$borm` WHERE NOT users='NULL'"  ;
+                    $resultb=mysqli_query($dab, $sql); 
+                    if($resultb){
+                      $rowq=mysqli_fetch_assoc($resultb);
+                      $memsa=$rowq['COUNT(DISTINCT users)'];
+                      
+                    
+                  
+                    $db= mysqli_connect('localhost','root','', 'forms')or die("could not connect database.."); 
+                    $sql="SELECT * FROM `$borm` WHERE  NOT `mem`='NULL' ";
+                    $result=mysqli_query($db, $sql); 
+        
+                           if($result){
+                             $row=mysqli_fetch_assoc($result);
+                             $mems=$row['mem'];
+                             $limi=$mems-$memsa;
+                             echo "no of responses left : ".$limi;
+                           }
+                
+                          }
+                          else{
+                            $memsa=0;
+                             
+                    $db= mysqli_connect('localhost','root','', 'forms')or die("could not connect database.."); 
+                    $sql="SELECT * FROM `$borm` WHERE  NOT `mem`='NULL' ";
+                    $result=mysqli_query($db, $sql); 
+        
+                           if($result){
+                             $row=mysqli_fetch_assoc($result);
+                             $mems=$row['mem'];
+                             $limi=$mems-$memsa;
+                             echo "no of responses left : ".$limi;
+                           }
+                          }
+            
+            ?>
+       
+    
 
 
  </div>
@@ -174,18 +215,35 @@ echo "</div>";
 
 
 ?>
-       
-      
-
-     
+ <button class="btn btn-warning" type="submit" name="submit0">submit</button>
 
 
+<?php
+            $borm= $_SESSION['formname'];
+            $admin=$_SESSION['admin'];
+            $db= mysqli_connect('localhost','root','', 'forms')or die("could not connect database.."); 
+            $sql="SELECT * FROM `$borm` WHERE  NOT `mem`='NULL' ";
+            $result=mysqli_query($db, $sql); 
 
-       <button class="btn btn-warning" type="submit" name="submit0">submit</button>
+                   if($result){
+                     $row=mysqli_fetch_assoc($result);
+                     $mems=$row['mem'];
+                     $dab= mysqli_connect('localhost','root','',$admin)or die("could not connect database..");   
+                     $sql="SELECT COUNT( DISTINCT users) FROM `$borm` WHERE NOT users='NULL'"  ;
+                    $resultb=mysqli_query($dab, $sql); 
+                    if($resultb){
+                    $rowq=mysqli_fetch_assoc($resultb);
+                    $memsa=$rowq['COUNT( DISTINCT users)'];
+                    }}
+                  else
+                  {
+                  $mems=2;  
+                  $memsa=0;
+                  }
 
-
-       <?php
-        if(isset($_POST['submit0']))
+     if($memsa <= $mems)
+{
+            if(isset($_POST['submit0']))
            {  
           $admin=$_SESSION['admin'];
           $user=$_SESSION['username'];
@@ -193,7 +251,7 @@ echo "</div>";
           $dab= mysqli_connect('localhost','root','',$admin)or die("could not connect database..");   
           $borm= $_SESSION['formname'];
         
-        
+           
           for($i=0; $i<20; $i++)
          {
            $qn="qn".$i;
@@ -203,11 +261,10 @@ echo "</div>";
             $result=mysqli_query($db, $sql); 
 
                    if($result)
-   {
+                   {
                          $row= mysqli_fetch_assoc($result);
                          $sala=$row[$qn];
-
-                         $j=0;
+                        $j=0;
     $an0='ass'.$i.$j;
     $db= mysqli_connect('localhost','root','', 'forms')or die("could not connect database..");
     $sql="SELECT * FROM `$borm` WHERE  NOT `$sel`='NULL'";
@@ -285,16 +342,20 @@ echo "</div>";
 }}
 }
 }
-       ?>
+}
+
+else
+{
+  echo "<script>alert('sorry, the response for this form as extended above the limit');</script>";
+
+}
+
+?>
 
   
 </div>
 </div>
 </div>
-
-
 </form>
-
 </body>
-	  
-	   </html>
+</html>

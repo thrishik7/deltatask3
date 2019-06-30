@@ -124,7 +124,7 @@ mysqli_query($conn, $sql);
 </select> 
 
 <div>
-    <input  id="mySelect2" type="text" placeholder="answer" name="ass00" >
+    <input  id="mySelect2" type="text" placeholder="Answer" name="ass00" >
 </div>
      
 </div>
@@ -139,8 +139,8 @@ mysqli_query($conn, $sql);
 <div class="baa">
 <button class="btn btn-warning" onclick="add();" type="button" name="add_question">+</button>
 <button class="btn btn-warning" type="submit" name="submit">CREATE</button>
-<button class="btn btn-warning" onclick="mem();" type="button" name="submit2">LIMITED USERS</button>
-<button class="btn btn-primary"  onclick="time();" type="button" name="submit1">TIMED</button>
+<button class="btn btn-warning" onclick="mem();" type="button" name="submitss">LIMITED USERS</button>
+<button class="btn btn-primary"  onclick="time();" type="button" name="submits">TIMED</button>
 <br>
 </div>
 <script>
@@ -154,6 +154,7 @@ function mem()
        var di= document.createElement("input");
        di.placeholder="limit the users";
        di.setAttribute("name","mem");
+       di.setAttribute("required","true");
        dW.appendChild(di);
 }
 
@@ -499,9 +500,20 @@ mysqli_query($bd, $sql);
   }
 }
 
+if(isset($_POST['mem']))
+
+{
+  $db= mysqli_connect('localhost','root','', 'forms')or die("could not connect database..");
+  $sql="ALTER TABLE $formname
+ADD mem varchar(255)";
+mysqli_query($db, $sql);
+$mem=mysqli_real_escape_string($db, ($_POST["mem"]));
+$db= mysqli_connect('localhost','root','', 'forms')or die("could not connect database..");
+$sql="INSERT INTO `$formname` ( `mem`) VALUES ('$mem')";
+mysqli_query($db, $sql);
 
 
-
+}
 
 
  }
